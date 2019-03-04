@@ -859,17 +859,19 @@ static NSString * const reviewURLTemplate                   = @"macappstore://it
 	[alert addButtonWithTitle:self.cancelButtonTitle];
 	self.ratingAlert = alert;
 
-	NSWindow *window = [[NSApplication sharedApplication] keyWindow];
-	if (window) {
-	    // TODO: Deprecated function
-		[alert beginSheetModalForWindow:[[NSApplication sharedApplication] keyWindow]
-						  modalDelegate:self
-						 didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
-							contextInfo:nil];
-	} else {
+//  NSWindow *window = [[NSApplication sharedApplication] keyWindow];
+//  if (window) {
+//      // TODO: Deprecated function
+//    [alert beginSheetModalForWindow:[[NSApplication sharedApplication] keyWindow]
+//              modalDelegate:self
+//             didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+//              contextInfo:nil];
+//  } else {
+  NSLog(@"[SY] always running modal");
+  // TODO SY log
 		NSInteger returnCode = [alert runModal];
 		[self handleNSAlertReturnCode:returnCode];
-	}
+//  }
 
 	if (self.didDisplayAlertBlock)
 		self.didDisplayAlertBlock();
