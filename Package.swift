@@ -1,15 +1,16 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
     name: "UAAppReviewManager",
+    defaultLocalization: "en",
     platforms: [
-        .iOS(.v5_1),
-        .macOS(.v10_7)
+        .iOS(.v9),
+        .macOS(.v10_14)
     ],
     products: [
         .library(
-            name: "UAAppReviewManager",
+            name: "UAAppReviewMansager",
             type: .static,
             targets: ["UAAppReviewManager"])
     ],
@@ -17,7 +18,18 @@ let package = Package(
     targets: [
         .target(
             name: "UAAppReviewManager",
-            exclude: ["Screenshots"]
+            path: ".",
+            exclude: [
+                "Screenshots",
+                "UAAppReviewManagerExample",
+                "UAAppReviewManagerTests",
+            	"UAAppReviewManager/Info.plist",
+                "CHANGELOG.md",
+                "LICENSE",
+                "README.md",
+                "UAAppReviewManager.podspec"
+            ],
+            publicHeadersPath: "."
         )
     ]
 )
